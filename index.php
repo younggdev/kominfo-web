@@ -19,6 +19,8 @@
       include 'components/galeri/galeri.php';
     } else if ($_GET['page'] == 'tim') {
       include 'components/tim/tim.php';
+    } else if ($_GET['page'] == 'detail-berita') {
+      include 'components/berita/detail_berita.php';
     }
   } else {
     include 'components/home.php';

@@ -59,9 +59,14 @@
 <article>
     <div class="lg:grid lg:grid-cols-3 mx-5 my-10">
         <div class="col-span-2 mr-5">
+            <?php
+            $id = $_GET['id'];
+            $query = mysqli_query($koneksi, "SELECT * FROM berita WHERE id = '$id'");
+            $data = mysqli_fetch_array($query);
+            ?>
             <img src="img/bg2.png" alt="" class="w-full" />
-            <h1 class="text-xl mt-3 mb-5 font-semibold">JUDUL BERITA</h1>
-            <p class="text-xs italic mt-3 mb-5"><i class="bi bi-clock mr-2"></i> 1 - 1 - 2023 <i class="bi bi-eye ml-5 mr-2"></i> xx views <i class="bi bi-person ml-5 mr-2"></i> DISKOMINFO</p>
+            <h1 class="text-xl mt-3 mb-5 font-semibold"><?= $data['judul'] ?></h1>
+            <p class="text-xs italic mt-3 mb-5"><i class="bi bi-clock mr-2"></i> <?= date('d F Y', strtotime($data["tanggal"])); ?> <i class="bi bi-eye ml-5 mr-2"></i> xx views <i class="bi bi-person ml-5 mr-2"></i> DISKOMINFO</p>
             <div class="mt-3 mb-5">
                 <p class="mb-5">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nam provident corrupti qui aspernatur illum, architecto eos, inventore illo voluptatum accusantium neque totam ullam? Inventore possimus, eveniet

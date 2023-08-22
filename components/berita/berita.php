@@ -117,13 +117,13 @@
             while ($d = mysqli_fetch_array($data)) {
             ?>
                 <div class="md:flex shadow-md rounded-md overflow-hidden mr-3 mb-10">
-                    <img src="img/<?= $d['gambar'] ?>" alt="" class="md:w-96" />
+                    <img src="dashboard/app/foto/berita/<?= $d['foto'] ?>" alt="gambar" class="md:w-96" />
                     <div class="pl-3">
                         <p class="text-2xl font-semibold text-sky-600 mt-3"><?= $d['judul'] ?></p>
                         <p class="text-sm my-2"><i class="bi bi-calendar pr-2"></i><?= $d['tanggal'] ?></p>
-                        <p><?= $d['isi'] ?></p>
+                        <p><?= substr($d['isi'], 0, 200) ?>. . .</p>
                         <div class="flex justify-end">
-                            <a href="detail_berita.php" class="px-3 py-2 bg-sky-500 my-5 mr-3 rounded-md inline-block hover:tracking-wide transition-all duration-300 text-white">Baca Selengkapnya <i class="bi bi-arrow-right ml-2 text-lg"></i></a>
+                            <a href="index.php?page=detail-berita&&id=<?= $d['id'] ?>" class="px-3 py-2 bg-sky-500 my-5 mr-3 rounded-md inline-block hover:tracking-wide transition-all duration-300 text-white">Baca Selengkapnya <i class="bi bi-arrow-right ml-2 text-lg"></i></a>
                         </div>
                     </div>
                 </div>
