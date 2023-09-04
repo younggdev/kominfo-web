@@ -11,13 +11,16 @@
     <div class="card-body p-0">
         <ul class="nav nav-pills flex-column">
             <?php
-            $query = mysqli_query($koneksi, "SELECT count(id)  AS inbox FROM contact_us");
+            $query = mysqli_query($koneksi, "SELECT
+            SUM(CASE WHEN status = 'inbox' THEN 1 ELSE 0 END) AS jumlah_inbox,
+            SUM(CASE WHEN status = 'sampah' THEN 1 ELSE 0 END) AS jumlah_sampah
+        FROM contact_us");
             $data = mysqli_fetch_array($query);
             ?>
             <li class="nav-item active">
                 <a href="index.php?page=data-contact" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <span class="badge bg-primary float-right"><?= $data['inbox'] ?></span>
+                    <span class="badge bg-primary float-right"><?= $data['jumlah_inbox'] ?></span>
                 </a>
             </li>
             <li class="nav-item">
@@ -26,7 +29,7 @@
                     <span class="badge bg-primary float-right">xx</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-file-alt"></i> Drafts
                     <span class="badge bg-primary float-right">xx</span>
@@ -37,11 +40,11 @@
                     <i class="fas fa-exclamation-circle"></i> Spam
                     <span class="badge bg-primary float-right">xx</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="index.php?page=trash" class="nav-link">
                     <i class="far fa-trash-alt"></i> Trash
-                    <span class="badge bg-primary float-right">xx</span>
+                    <span class="badge bg-primary float-right"><?= $data['jumlah_sampah'] ?></span>
                 </a>
             </li>
         </ul>

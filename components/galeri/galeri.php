@@ -127,8 +127,8 @@
         ?>
             <div class="mx-3">
                 <div class="h-15 mb-3 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3] bg-sky-400 rounded-lg overflow-hidden group relative">
-                    <div style="background-image: url(img/<?= $d['gambar'] ?>);" class="w-full h-full  bg-cover bg-center group-hover:scale-110 transition-all duration-300">
-                        <img id="myImg" src="img/<?= $d['gambar'] ?>" alt="<?= $d['caption'] ?>" class="h-full opacity-0 myImg" />
+                    <div style="background-image: url(dashboard/app/foto/galeri/<?= $d['foto'] ?>);" class="w-full h-full  bg-cover bg-center group-hover:scale-110 transition-all duration-300">
+                        <img id="myImg" src="dashboard/app/foto/galeri/<?= $d['foto'] ?>" alt="<?= $d['caption'] ?>" class="h-full opacity-0 myImg" />
                     </div>
                 </div>
                 <p class="mb-2"><?= $d['caption'] ?></p>

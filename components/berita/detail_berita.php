@@ -68,19 +68,7 @@
             <h1 class="text-xl mt-3 mb-5 font-semibold"><?= $data['judul'] ?></h1>
             <p class="text-xs italic mt-3 mb-5"><i class="bi bi-clock mr-2"></i> <?= date('d F Y', strtotime($data["tanggal"])); ?> <i class="bi bi-eye ml-5 mr-2"></i> xx views <i class="bi bi-person ml-5 mr-2"></i> DISKOMINFO</p>
             <div class="mt-3 mb-5">
-                <p class="mb-5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nam provident corrupti qui aspernatur illum, architecto eos, inventore illo voluptatum accusantium neque totam ullam? Inventore possimus, eveniet
-                    quod nihil sint dolore esse maiores a omnis cum nulla. Adipisci quo beatae velit, quidem illum quis incidunt porro magni optio aut. Itaque.
-                </p>
-                <p class="mb-5">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem tempore deserunt odit quo facilis, recusandae amet tenetur delectus, natus non error iusto! Obcaecati asperiores voluptates molestiae
-                    laborum mollitia amet cum reprehenderit doloremque quas unde vero quia ratione iusto veniam dolore natus nesciunt, ipsa cumque quibusdam consectetur ad, atque laudantium, minima dolorem. Ex quibusdam assumenda
-                    nobis facilis soluta ullam. Ipsum illum numquam fugit mollitia, voluptate fugiat doloribus sequi assumenda iure adipisci.
-                </p>
-                <p class="mb-5">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo fugiat dolore blanditiis itaque ducimus natus saepe nostrum delectus aliquam libero voluptates debitis distinctio optio dolores, repudiandae
-                    cupiditate, nobis possimus quae.
-                </p>
+                <?= $data['isi'] ?>
             </div>
             <div class="w-60 h-1 bg-slate-600"></div>
             <p class="mb-2">Bagikan :</p>

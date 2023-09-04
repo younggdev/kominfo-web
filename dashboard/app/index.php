@@ -3,7 +3,7 @@
 <?php
 session_start();
 if (!$_SESSION['nama']) {
-    header('location: ../index.php?sassion=expired');
+    header('location: ../index.php?session=expired');
 }
 include 'head.php'; ?>
 <?php include '../config/config.php' ?>
@@ -39,9 +39,9 @@ include 'head.php'; ?>
                 if ($_GET['page'] == 'dashboard') {
                     include 'dashboard.php';
                 } else if ($_GET['page'] == 'data-pegawai') {
-                    include 'data.php';
+                    include 'data_pegawai.php';
                 } else if ($_GET['page'] == 'edit-data') {
-                    include 'edit/edit_data.php';
+                    include 'edit/edit_data_pegawai.php';
                 } else if ($_GET['page'] == 'edit-galeri') {
                     include 'edit/edit_galeri.php';
                 } else if ($_GET['page'] == 'data-galeri') {
@@ -50,8 +50,12 @@ include 'head.php'; ?>
                     include 'contact/contact.php';
                 } else if ($_GET['page'] == 'read-mail') {
                     include 'contact/read_mail.php';
+                } else if ($_GET['page'] == 'trash') {
+                    include 'contact/trash.php';
                 } else if ($_GET['page'] == 'data-berita') {
                     include 'berita/berita.php';
+                } else if ($_GET['page'] == 'edit-berita') {
+                    include 'edit/edit_berita.php';
                 } else {
                     include 'not_found.php';
                 }

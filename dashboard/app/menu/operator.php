@@ -2,8 +2,20 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+        <?php
+        $current_page = isset($_GET['page']) ? $_GET['page'] : '';
+
+        $pages = array('dashboard', 'data-pegawai', 'data-galeri', 'data-contact', 'data-berita');
+
+        function isActivePage($currentPage, $page)
+        {
+            return $currentPage === $page ? 'active' : '';
+        }
+        ?>
+
         <li class="nav-item">
-            <a href="index.php?page=dashboard" class="nav-link">
+            <a href="index.php?page=dashboard" class="nav-link <?= isActivePage($current_page, 'dashboard'); ?>">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                     Dasboard
@@ -21,25 +33,25 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="index.php?page=data-pegawai" class="nav-link active">
+                    <a href="index.php?page=data-pegawai" class="nav-link <?= isActivePage($current_page, 'data-pegawai'); ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Data Pegawai</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?page=data-galeri" class="nav-link">
+                    <a href="index.php?page=data-galeri" class="nav-link <?= isActivePage($current_page, 'data-galeri'); ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Data Galeri</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?page=data-berita" class="nav-link">
+                    <a href="index.php?page=data-berita" class="nav-link <?= isActivePage($current_page, 'data-berita'); ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Data Berita</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?page=data-contact" class="nav-link">
+                    <a href="index.php?page=data-contact" class="nav-link <?= isActivePage($current_page, 'data-contact'); ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Data Contact Us</p>
                     </a>

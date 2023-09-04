@@ -37,12 +37,21 @@
                             <p><?= $data['pesan'] ?></p>
                         </div>
                         <!-- /.mailbox-read-message -->
+                        <div class="row">
+                            <div class="col mb-2" id="editorContainer" style="display: none;">
+                                <textarea name="teks" id="teks" width="500px"></textarea>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <!-- /.card-footer -->
                     <div class="card-footer">
                         <div class="float-right">
-                            <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
+                            <!-- <span id="toggleTextHide" style="display: none;">Sembunyikan Editor</span> -->
+                            <button type="button" class="btn btn-default" id="toggleTextHide" style="display: none;"><i class="fa fa-paper-plane"></i> Kirim
+                            </button>
+                            <button type="button" class="btn btn-default" id="showEditorButton"><i class="fas fa-reply"></i> Reply
+                            </button>
                             <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
                         </div>
                         <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
@@ -56,3 +65,36 @@
         <!-- /.row -->
     </div><!-- /.container-fluid -->
 </section>
+<script src="ckeditor/ckeditor.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const editorContainer = document.querySelector("#editorContainer");
+        const showEditorButton = document.querySelector("#showEditorButton");
+        const toggleTextHide = document.querySelector("#toggleTextHide");
+
+        let ckEditorInstance;
+
+        showEditorButton.addEventListener("click", function() {
+            if (!ckEditorInstance) {
+                // Inisialisasi CKEditor
+                ckEditorInstance = CKEDITOR.replace("teks");
+                editorContainer.style.display = "block";
+                // showEditorButton.textContent = "Kirim";
+                toggleTextHide.style.display = "inline";
+            } else {
+                // Hancurkan instansi CKEditor
+                ckEditorInstance.destroy();
+                ckEditorInstance = null;
+                editorContainer.style.display = "none";
+                toggleTextHide.style.display = "none";
+                // showEditorButton.textContent = "Tampilkan Editor";
+            }
+        });
+    });
+
+    // CKEDITOR.replace('teks', {
+    //     filebrowserUploadUrl: 'add/tambah_berita.php',
+    //     filebrowserUploadMethod: 'form'
+    // });
+    // CKEDITOR.config.width = '100%';
+</script>

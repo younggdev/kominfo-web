@@ -26,17 +26,17 @@
                                  <?php
                                     $no = 0;
                                     $query = mysqli_query($koneksi, 'SELECT * FROM galeri');
-                                    while ($mhs = mysqli_fetch_array($query)) {
+                                    while ($data = mysqli_fetch_array($query)) {
                                         $no++;
                                     ?>
                                      <tr>
                                          <td width='5%'><?= $no ?></td>
-                                         <td><img src="foto/galeri/<?= $mhs['foto'] ?>" alt="" width="100px"></td>
-                                         <td><?= $mhs['caption'] ?></td>
-                                         <td><?= date('d F Y', strtotime($mhs["tanggal"])); ?></td>
+                                         <td><img src="foto/galeri/<?= $data['foto'] ?>" alt="" width="100px"></td>
+                                         <td><?= $data['caption'] ?></td>
+                                         <td><?= date('d F Y', strtotime($data["tanggal"])); ?></td>
                                          <td>
-                                             <a onclick="hapus_data(<?= $mhs['id'] ?>)" class="btn btn-sm btn-danger">Hapus</a>
-                                             <a href="index.php?page=edit-galeri&&id=<?= $mhs['id'] ?>" class="btn btn-sm btn-success">Edit</a>
+                                             <a onclick="hapus_data(<?= $data['id'] ?>)" class="btn btn-sm btn-danger">Hapus</a>
+                                             <a href="index.php?page=edit-galeri&&id=<?= $data['id'] ?>" class="btn btn-sm btn-success">Edit</a>
                                          </td>
                                      </tr>
                                  <?php } ?>

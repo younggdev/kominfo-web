@@ -82,60 +82,20 @@
      <h1 class="text-center text-xl font-bold">BERITA</h1>
      <p class="text-center mb-5 italic">Berita seputar agenda dan kegiatan Dinas Komunikasi dan Informatika Kabupaten Purwakarta</p>
      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-         <div class="group cursor-pointer bg-[url('img/bg2.png')] bg-center bg-cover flex relative aspect-video mb-5">
-             <div class="bg-[#339BEB] text-white p-5 mx-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-10 group-hover:-bottom-8">
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, voluptas.</p>
-                 <div class="flex justify-between">
-                     <div></div>
-                     <a href="detail_berita.php"><i class="bi bi-arrow-right-circle text-xl"></i></a>
+         <?php
+            $data = mysqli_query($koneksi, "SELECT * FROM berita ORDER BY tanggal DESC");
+            while ($d = mysqli_fetch_array($data)) {
+            ?>
+             <div style="background-image: url('dashboard/app/foto/berita/<?= $d['foto'] ?>');" class="group cursor-pointer bg-[url('img/bg2.png')] bg-center bg-cover flex relative aspect-video mb-5">
+                 <div class="bg-[#339BEB] text-white p-5 mx-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-10 group-hover:-bottom-8">
+                     <p><?= substr($d['isi'], 0, 50) ?>. . . </p>
+                     <div class="flex justify-between">
+                         <div></div>
+                         <a href="detail_berita.php"><i class="bi bi-arrow-right-circle text-xl"></i></a>
+                     </div>
                  </div>
              </div>
-         </div>
-         <div class="group cursor-pointer bg-[url('img/bg2.png')] bg-center bg-cover flex relative aspect-video mb-5">
-             <div class="bg-[#339BEB] text-white p-5 mx-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-10 group-hover:-bottom-8">
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, voluptas.</p>
-                 <div class="flex justify-between">
-                     <div></div>
-                     <a href="detail-berita.html"><i class="bi bi-arrow-right-circle text-xl"></i></a>
-                 </div>
-             </div>
-         </div>
-         <div class="group cursor-pointer bg-[url('img/bg2.png')] bg-center bg-cover flex relative aspect-video mb-5">
-             <div class="bg-[#339BEB] text-white p-5 mx-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-10 group-hover:-bottom-8">
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, voluptas.</p>
-                 <div class="flex justify-between">
-                     <div></div>
-                     <a href="detail-berita.html"><i class="bi bi-arrow-right-circle text-xl"></i></a>
-                 </div>
-             </div>
-         </div>
-         <div class="group cursor-pointer bg-[url('img/bg2.png')] hidden bg-center bg-cover lg:flex relative aspect-video mb-5">
-             <div class="bg-[#339BEB] text-white p-5 mx-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-10 group-hover:-bottom-8">
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, voluptas.</p>
-                 <div class="flex justify-between">
-                     <div></div>
-                     <a href="detail-berita.html"><i class="bi bi-arrow-right-circle text-xl"></i></a>
-                 </div>
-             </div>
-         </div>
-         <div class="group cursor-pointer bg-[url('img/bg2.png')] bg-center hidden bg-cover lg:flex relative aspect-video mb-5">
-             <div class="bg-[#339BEB] text-white p-5 mx-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-10 group-hover:-bottom-8">
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, voluptas.</p>
-                 <div class="flex justify-between">
-                     <div></div>
-                     <a href="detail-berita.html"><i class="bi bi-arrow-right-circle text-xl"></i></a>
-                 </div>
-             </div>
-         </div>
-         <div class="group cursor-pointer bg-[url('img/bg2.png')] bg-center hidden bg-cover md:flex relative aspect-video mb-5">
-             <div class="bg-[#339BEB] text-white p-5 mx-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-10 group-hover:-bottom-8">
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, voluptas.</p>
-                 <div class="flex justify-between">
-                     <div></div>
-                     <a href="detail-berita.html"><i class="bi bi-arrow-right-circle text-xl"></i></a>
-                 </div>
-             </div>
-         </div>
+         <?php } ?>
      </div>
  </section>
  <!-- Berita Ends -->
@@ -148,39 +108,36 @@
          <div class="px-5">
              <p class="px-5 py-5"><i class="bi bi-person-fill pr-5"></i>Profil Struktural</p>
              <div class="flex justify-center items-center">
-                 <div class="satu flex items-center mx-3">
-                     <div>
-                         <img src="img/profil.jpg" alt="profil satu" class="h-15 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3]" />
+                 <?php $data = mysqli_query($koneksi, "SELECT * FROM profil_pegawai ORDER BY id DESC LIMIT 2");
+                    while ($d = mysqli_fetch_array($data)) { ?>
+                     <div class="satu flex items-center mx-3">
+                         <div>
+                             <img src="dashboard/app/foto/pegawai/<?= $d['foto'] ?>" alt="profil satu" class="h-15 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3]" />
+                         </div>
                      </div>
-                 </div>
-                 <div class="satu flex items-center mx-3">
-                     <div>
-                         <img src="img/profil.jpg" alt="profil satu" class="h-15 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3]" />
-                     </div>
-                 </div>
+                 <?php } ?>
              </div>
              <div class="text-center my-8">
-                 <a href="profil.php" class="text-center px-3 hover:bg-slate-200 transition-all duration-300 py-2 border rounded-md">Lihat Selengkapnya</a>
+                 <a href="index.php?page=tim" class="text-center px-3 hover:bg-slate-200 transition-all duration-300 py-2 border rounded-md">Lihat Selengkapnya</a>
              </div>
          </div>
          <div class="px-5">
              <p class="px-5 py-5"><i class="bi bi-image pr-5"></i>Galeri</p>
              <div class="grid grid-cols-2">
-                 <div class="h-15 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3] bg-sky-400 rounded-lg overflow-hidden group relative mx-3">
-                     <div class="w-full h-full bg-[url('img/bg2.png')] bg-cover bg-center group-hover:scale-110 transition-all duration-300"></div>
-                     <div class="bg-[#339BEB] w-full bg-opacity-75 text-white p-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-8 group-hover:-bottom-0">
-                         <p class="text-sm">Lorem ipsum dolor sit amet.</p>
+                 <?php
+                    $data = mysqli_query($koneksi, "SELECT * FROM galeri ORDER BY tanggal DESC LIMIT 2");
+                    while ($d = mysqli_fetch_array($data)) {
+                    ?>
+                     <div class="h-15 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3] bg-sky-400 rounded-lg overflow-hidden group relative mx-3">
+                         <div style="background-image: url(dashboard/app/foto/galeri/<?= $d['foto'] ?>);" class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-all duration-300"></div>
+                         <div class="bg-[#339BEB] w-full bg-opacity-75 text-white p-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-8 group-hover:-bottom-0">
+                             <p class="text-sm"><?= $d['caption'] ?></p>
+                         </div>
                      </div>
-                 </div>
-                 <div class="h-15 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3] bg-sky-400 rounded-lg overflow-hidden group relative mx-3">
-                     <div class="w-full h-full bg-[url('img/bg2.png')] bg-cover bg-center group-hover:scale-110 transition-all duration-300"></div>
-                     <div class="bg-[#339BEB] w-full bg-opacity-75 text-white p-5 block invisible group-hover:visible transition-all duration-300 opacity-0 group-hover:opacity-100 absolute -bottom-8 group-hover:-bottom-0">
-                         <p class="text-sm">Lorem ipsum dolor sit amet.</p>
-                     </div>
-                 </div>
+                 <?php  } ?>
              </div>
              <div class="text-center mt-8">
-                 <a href="galeri.php" class="text-center px-3 hover:bg-slate-200 transition-all duration-300 py-2 border rounded-md">Lihat Selengkapnya</a>
+                 <a href="index.php?page=galeri" class="text-center px-3 hover:bg-slate-200 transition-all duration-300 py-2 border rounded-md">Lihat Selengkapnya</a>
              </div>
          </div>
      </div>
@@ -227,24 +184,123 @@
          </div>
          <div class="md:w-3/4 md:ml-16">
              <div class="text-2xl font-semibold text-[#1f326b] pb-16 text-left">Saran dan Komentar</div>
-             <form action="process/contact.php" method="post">
+             <form action="process/contact.php" method="post" id="contactForm">
+                 <div id="successMessage" class="p-5 bg-red font-semibold text-white text-sm text-left rounded-md mb-5"></div>
                  <div class="h-12 w-full">
-                     <input type="text" placeholder="Nama lengkap" name="nama" required class="h-full w-full border-none outline-none text-base bg-[#f0f1f8] rounded-md px-4" />
+                     <input type="text" placeholder="Nama lengkap" name="nama" id="nama" required class="h-full w-full border-none outline-none text-base bg-[#f0f1f8] rounded-md px-4" />
                  </div>
                  <div class="h-12 w-full my-3">
-                     <input type="text" placeholder="Email" name="email" required class="h-full w-full border-none outline-none text-base bg-[#f0f1f8] rounded-md px-4" />
+                     <input type="text" placeholder="Email" name="email" id="email" required class="h-full w-full border-none outline-none text-base bg-[#f0f1f8] rounded-md px-4" />
                  </div>
                  <div class="h-12 w-full my-3">
-                     <input type="number" placeholder="No HP" name="no_hp" required class="h-full w-full border-none outline-none text-base bg-[#f0f1f8] rounded-md px-4" />
+                     <input type="number" placeholder="No HP" name="no_hp" id="no_hp" required class="h-full w-full border-none outline-none text-base bg-[#f0f1f8] rounded-md px-4" />
                  </div>
                  <div class="min-h-[110px]">
-                     <textarea name="pesan" id="" cols="30" rows="10" required class="w-full border-none outline-none text-base bg-[#f0f1f8] rounded-md px-4 pt-2 h-24" placeholder="Pesan dan Komentar..."></textarea>
+                     <textarea name="pesan" id="pesan" cols="30" rows="10" required class="w-full border-none outline-none text-base bg-[#f0f1f8] rounded-md px-4 pt-2 h-24" placeholder="Pesan dan Komentar..."></textarea>
                  </div>
                  <div class="inline-block">
-                     <button type="submit" class="text-white text-lg outline-none border-none py-2 px-4 rounded-md bg-[#1f326b] cursor-pointer transition-all duration-300 ease-in hover:bg-[#2b448f]">Kirim Pesan</button>
+                     <button type="submit" class="text-white text-lg outline-none border-none py-2 px-4 rounded-md bg-[#1f326b] cursor-pointer transition-all duration-300 ease-in hover:bg-[#2b448f]" id="contactButton">Kirim Pesan</button>
                  </div>
              </form>
          </div>
      </div>
  </div>
  <!-- Contact Ends -->
+ <!-- Page specific script -->
+ <script src="dashboard/app/plugins/jquery/jquery.min.js"></script>
+ <!-- Bootstrap 4 -->
+ <script src="dashboard/app/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <!-- AdminLTE App -->
+ <script src="dashboard/app/dist/js/adminlte.min.js"></script>
+ <!-- SweetAlert2 -->
+ <script src="dashboard/app/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+ <script>
+     document.getElementById('contactButton').addEventListener('click', function(event) {
+         event.preventDefault(); // Mencegah formulir dikirim
+
+         if (validateForm()) {
+             showContactAlert();
+         } else {
+             Swal.fire("Mohon untuk mengisi semuanya", "", "error");
+         }
+     });
+
+     function validateForm() {
+         var nama = document.getElementById('nama').value;
+         var email = document.getElementById('email').value;
+         var no_hp = document.getElementById('no_hp').value;
+         var pesan = document.getElementById('pesan').value;
+
+         if (nama === "" || email === "" || no_hp === "" || pesan === "") {
+             return false;
+         }
+
+         return true;
+     }
+
+     function showContactAlert() {
+         Swal.fire({
+             title: "Konfirmasi",
+             text: "Apakah Anda yakin?",
+             icon: "warning",
+             showCancelButton: true,
+             confirmButtonText: "Ya",
+             cancelButtonText: "Tidak",
+         }).then((confirmed) => {
+             if (confirmed) {
+                 sendForm();
+             }
+         })
+     }
+
+     function sendForm() {
+         // Ambil data formulir
+         var nama = document.getElementById('nama').value;
+         var email = document.getElementById('email').value;
+         var no_hp = document.getElementById('no_hp').value;
+         var pesan = document.getElementById('pesan').value;
+
+         // Buat objek XMLHttpRequest
+         var xhr = new XMLHttpRequest();
+
+         // Konfigurasi permintaan
+         xhr.open('POST', 'process/contact.php', true);
+         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+         // Tangani respons dari server
+         xhr.onreadystatechange = function() {
+             if (xhr.readyState === 4) { // Permintaan selesai
+                 if (xhr.status === 200) { // Respons berhasil diterima
+                     // Tampilkan pesan sukses
+                     showSuccessMessage();
+                 } else {
+                     // Tangani kesalahan jika ada
+                     console.error('Terjadi kesalahan saat mengirim formulir:', xhr.statusText);
+                 }
+             }
+         };
+
+         // Kode data formulir ke dalam format yang sesuai (misalnya, URL-encoded)
+         var formData = 'nama=' + encodeURIComponent(nama) +
+             '&email=' + encodeURIComponent(email) +
+             '&no_hp=' + encodeURIComponent(no_hp) +
+             '&pesan=' + encodeURIComponent(pesan);
+
+         // Kirim data formulir ke server
+         xhr.send(formData);
+     }
+
+
+     function showSuccessMessage() {
+         let success = document.getElementById('successMessage');
+         success.innerText = "Pesan berhasil dikirim!";
+         success.classList.add('bg-primary')
+
+         // Kosongkan nilai input setelah pengiriman berhasil
+         document.getElementById('nama').value = "";
+         document.getElementById('email').value = "";
+         document.getElementById('no_hp').value = "";
+         document.getElementById('pesan').value = "";
+     }
+ </script>

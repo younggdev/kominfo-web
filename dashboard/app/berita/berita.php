@@ -74,7 +74,7 @@
                      </div>
                      <div class="row">
                          <div class="col mb-2">
-                             <textarea name="editor" id="editor" width="500px"></textarea>
+                             <textarea name="teks" id="teks" width="500px"></textarea>
                          </div>
                      </div>
                      <div class="row">
@@ -125,7 +125,7 @@
          }
      }
 
-     CKEDITOR.replace('editor', {
+     CKEDITOR.replace('teks', {
          filebrowserUploadUrl: 'add/tambah_berita.php',
          filebrowserUploadMethod: 'form'
      });

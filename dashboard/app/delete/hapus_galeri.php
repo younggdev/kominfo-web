@@ -1,13 +1,27 @@
 <?php
 include '../../config/config.php';
 
-$id = $_GET['id'];
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $id = $_GET['id'];
 
+    // Dapatkan nama file gambar berdasarkan ID
+    $query = mysqli_query($koneksi, "SELECT foto FROM galeri WHERE id='$id'");
+    $row = mysqli_fetch_assoc($query);
+    $nama_file = $row['foto'];
 
-$pilih = mysqli_query($koneksi, "SELECT * FROM galeri  where id='$id'");
-$data = mysqli_fetch_array($pilih);
+    // Hapus data dari database
+    $delete_query = mysqli_query($koneksi, "DELETE FROM galeri WHERE id='$id'");
 
-$foto = $data['foto'];
-unlink("../foto/galeri/" . $foto);
-$query = mysqli_query($koneksi, "DELETE FROM galeri WHERE id = '$id'");
-header('location: ../index.php?page=data-galeri');
+    if ($delete_query) {
+        // Hapus berkas dari lokal penyimpanan
+        $lokasi_berkas = '../foto/galeri/' . $nama_file;
+        if (file_exists($lokasi_berkas)) {
+            unlink($lokasi_berkas);
+        }
+
+        header('location: ../index.php?page=data-galeri');
+    } else {
+        // Penanganan jika query gagal
+        echo "Gagal menghapus data.";
+    }
+}
